@@ -22,11 +22,21 @@ export abstract class ReceiptParser {
     return text.replace(/\r\n/g, "\n").replace(/[ \t]+/g, " ").trim();
   }
 
-  /** Utility: parse a price string like "1,23" or "1.23" into a number */
+  /** Utility: parse a price string like "1,23" or "1.23" into a number (2 dp) */
   protected parsePrice(raw: string): number {
     const cleaned = raw.replace(",", ".").replace(/[^0-9.]/g, "");
     const value = parseFloat(cleaned);
     return isNaN(value) ? 0 : Math.round(value * 100) / 100;
+  }
+
+  /**
+   * Utility: parse a quantity string (may have up to 3 decimal places for
+   * weight-based items, e.g. "1,372" or "0,388").
+   */
+  protected parseQuantity(raw: string): number {
+    const cleaned = raw.replace(",", ".").replace(/[^0-9.]/g, "");
+    const value = parseFloat(cleaned);
+    return isNaN(value) ? 0 : Math.round(value * 1000) / 1000;
   }
 
   /** Utility: build a ReceiptItem with sensible defaults */
