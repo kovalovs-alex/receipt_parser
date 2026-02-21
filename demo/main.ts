@@ -20,7 +20,7 @@ const parsers = [new MaximaParser(), new RimiParser()];
  * used by pdf-parse (group items by Y coordinate, newline between rows).
  */
 async function extractTextFromPdf(buffer: ArrayBuffer): Promise<string> {
-  const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+  const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(buffer) }).promise;
   let fullText = "";
 
   for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
@@ -48,7 +48,7 @@ async function extractTextFromPdf(buffer: ArrayBuffer): Promise<string> {
  * Used as the source image for Tesseract OCR.
  */
 async function renderPdfPageToCanvas(buffer: ArrayBuffer): Promise<HTMLCanvasElement> {
-  const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+  const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(buffer) }).promise;
   const page = await pdf.getPage(1);
 
   // Scale 2× for better OCR accuracy
