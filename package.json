@@ -1,0 +1,47 @@
+{
+  "name": "receipt-parser-lv",
+  "version": "0.1.0",
+  "description": "TypeScript library for parsing receipts from Latvian chain stores (Maxima, Rimi). Supports text and image PDFs.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kovalovs-alex/receipt_parser.git"
+  },
+  "keywords": [
+    "receipt",
+    "parser",
+    "latvia",
+    "maxima",
+    "rimi",
+    "pdf",
+    "ocr"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kovalovs-alex/receipt_parser/issues"
+  },
+  "homepage": "https://github.com/kovalovs-alex/receipt_parser#readme",
+  "dependencies": {
+    "pdf-parse": "^1.1.1",
+    "tesseract.js": "^6.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/node": "^22.13.4",
+    "eslint": "^9.20.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "vitest": "^3.0.6"
+  }
+}
