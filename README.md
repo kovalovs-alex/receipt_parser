@@ -37,6 +37,23 @@ const pdfResult = await parseReceiptPdf(pdfBuffer);
 const hinted = parseReceiptText(text, { store: Store.Maxima });
 ```
 
+## Live Demo
+
+An interactive demo is hosted on GitHub Pages at
+**https://kovalovs-alex.github.io/receipt_parser/**
+
+Upload any Maxima or Rimi receipt PDF and the page will parse it entirely
+client-side — no server involved.
+
+### Building the demo locally
+
+```bash
+npm run build:demo   # outputs to docs/
+npm run preview:demo # serve docs/ locally for inspection
+```
+
+GitHub Pages is configured to serve from the `docs/` folder of the `main` branch.
+
 ## Architecture
 
 | Library | Purpose |

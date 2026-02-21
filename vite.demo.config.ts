@@ -1,0 +1,13 @@
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  root: "demo",
+  base: "./",
+  build: {
+    outDir: "../docs",
+    emptyOutDir: true,
+  },
+  optimizeDeps: {
+    include: ["pdfjs-dist"],
+  },
+});
