@@ -1,0 +1,10 @@
+{
+  "name": "yocto-queue",
+  "version": "0.1.0",
+  "description": "Local shim for yocto-queue (replaces blocked npm package)",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  }
+}

@@ -35,7 +35,8 @@
   },
   "homepage": "https://github.com/kovalovs-alex/receipt_parser#readme",
   "overrides": {
-    "zlibjs": "file:./vendor/zlibjs"
+    "zlibjs": "file:./vendor/zlibjs",
+    "yocto-queue": "file:./vendor/yocto-queue"
   },
   "dependencies": {
     "pdf-parse": "^1.1.1",
