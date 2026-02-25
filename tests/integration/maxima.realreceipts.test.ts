@@ -1,5 +1,5 @@
 /**
- * Integration tests that parse real Maxima receipts from the dataset folder.
+ * Integration tests that parse real Maxima receipts from the integration fixtures folder.
  *
  * Covered PDFs (all text-based, no OCR required):
  *   2022-0020-5300-6116  – 2 items, weight-based item, no discounts
@@ -9,11 +9,11 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { parseReceiptPdf } from "../src/index";
-import { Store, type Receipt } from "../src/types";
+import { parseReceiptPdf } from "../../src/index";
+import { Store, type Receipt } from "../../src/types";
 
 function datasetPath(filename: string): string {
-  return join(__dirname, "../dataset", filename);
+  return join(__dirname, "fixtures", filename);
 }
 
 // ---------------------------------------------------------------------------

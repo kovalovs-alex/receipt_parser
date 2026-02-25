@@ -1,5 +1,5 @@
 /**
- * Integration tests that parse real Rimi receipts from the dataset folder.
+ * Integration tests that parse real Rimi receipts from the integration fixtures folder.
  *
  * NOTE: Rimi receipts are scanned image PDFs – text is extracted via OCR
  * (tesseract.js).  The RimiParser is not yet fully implemented, so these
@@ -15,13 +15,13 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { readFileSync } from "fs";
 import { join } from "path";
-import { parseReceiptPdf, isTextPdf } from "../src/index";
-import { Store, type Receipt } from "../src/types";
+import { parseReceiptPdf, isTextPdf } from "../../src/index";
+import { Store, type Receipt } from "../../src/types";
 
 const OCR_TIMEOUT = 120_000; // tesseract.js may be slow on first run
 
 function datasetPath(filename: string): string {
-  return join(__dirname, "../dataset", filename);
+  return join(__dirname, "fixtures", filename);
 }
 
 // ---------------------------------------------------------------------------

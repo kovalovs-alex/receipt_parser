@@ -79,6 +79,11 @@ src/
     ocrExtractor.ts     OCR extraction via tesseract.js
 tests/
   index.test.ts         Integration tests for the public API
+  integration/
+    maxima.realreceipts.test.ts  Maxima real receipt integration tests
+    rimi.ocr.precision.test.ts   OCR precision threshold tests (>= 90%)
+    rimi.realreceipts.test.ts    Rimi real receipt integration tests
+    fixtures/                    PDF fixtures required by real receipt tests
   maxima.test.ts        Maxima parser unit tests
   rimi.test.ts          Rimi parser unit tests
   types.test.ts         Type tests
@@ -95,6 +100,9 @@ npm run build
 
 # Run tests
 npm test
+
+# Optional: run strict OCR precision gates (93/95/97/99%)
+STRICT_OCR_PRECISION=1 npm test -- tests/integration/rimi.ocr.precision.test.ts
 
 # Lint
 npm run lint
