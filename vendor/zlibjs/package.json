@@ -1,0 +1,7 @@
+{
+  "name": "zlibjs",
+  "version": "0.3.1",
+  "description": "Local shim for zlibjs using Node.js built-in zlib (replaces blocked npm package)",
+  "main": "index.js",
+  "license": "Apache-2.0"
+}
