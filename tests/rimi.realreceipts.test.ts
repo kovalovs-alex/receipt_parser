@@ -13,7 +13,7 @@
  * Each describe block sets a generous timeout to accommodate OCR processing.
  */
 import { describe, it, expect, beforeAll } from "vitest";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { parseReceiptPdf, isTextPdf } from "../src/index";
 import { Store, type Receipt } from "../src/types";
@@ -24,10 +24,13 @@ function datasetPath(filename: string): string {
   return join(__dirname, "../dataset", filename);
 }
 
+const describeWithFile = (file: string) =>
+  describe.skipIf(!existsSync(datasetPath(file)));
+
 // ---------------------------------------------------------------------------
 // Receipt 1 – 5 items (3 discounted), total 7.76 EUR
 // ---------------------------------------------------------------------------
-describe("RimiParser – 32-3261410 (5 items, 3 discounted)", () => {
+describeWithFile("32-3261410.pdf")("RimiParser – 32-3261410 (5 items, 3 discounted)", () => {
   let receipt: Receipt;
 
   beforeAll(async () => {
@@ -109,7 +112,7 @@ describe("RimiParser – 32-3261410 (5 items, 3 discounted)", () => {
 // ---------------------------------------------------------------------------
 // Receipt 2 – 4 items (3 discounted), total 12.89 EUR
 // ---------------------------------------------------------------------------
-describe("RimiParser – 33-3323479 (4 items, 3 discounted)", () => {
+describeWithFile("33-3323479.pdf")("RimiParser – 33-3323479 (4 items, 3 discounted)", () => {
   let receipt: Receipt;
 
   beforeAll(async () => {
@@ -180,7 +183,7 @@ describe("RimiParser – 33-3323479 (4 items, 3 discounted)", () => {
 // ---------------------------------------------------------------------------
 // Receipt 3 – 8 items (3 discounted), total 22.18 EUR
 // ---------------------------------------------------------------------------
-describe("RimiParser – 34-3423071 (8 items, 3 discounted)", () => {
+describeWithFile("34-3423071.pdf")("RimiParser – 34-3423071 (8 items, 3 discounted)", () => {
   let receipt: Receipt;
 
   beforeAll(async () => {

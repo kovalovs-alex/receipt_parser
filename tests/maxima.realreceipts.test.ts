@@ -7,7 +7,7 @@
  *   2066-0130-0910-0264  – 6 items, 2 discounted, product name wraps to 2 lines
  */
 import { describe, it, expect, beforeAll } from "vitest";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { parseReceiptPdf } from "../src/index";
 import { Store, type Receipt } from "../src/types";
@@ -16,10 +16,13 @@ function datasetPath(filename: string): string {
   return join(__dirname, "../dataset", filename);
 }
 
+const describeWithFile = (file: string) =>
+  describe.skipIf(!existsSync(datasetPath(file)));
+
 // ---------------------------------------------------------------------------
 // Receipt 1 – two items, weight-based, no discounts
 // ---------------------------------------------------------------------------
-describe("MaximaParser – 2022-0020-5300-6116 (2 items, weight-based)", () => {
+describeWithFile("2022-0020-5300-6116.pdf")("MaximaParser – 2022-0020-5300-6116 (2 items, weight-based)", () => {
   let receipt: Receipt;
 
   beforeAll(async () => {
@@ -69,7 +72,7 @@ describe("MaximaParser – 2022-0020-5300-6116 (2 items, weight-based)", () => {
 // ---------------------------------------------------------------------------
 // Receipt 2 – three items, one discounted
 // ---------------------------------------------------------------------------
-describe("MaximaParser – 2022-0030-5970-4670 (3 items, 1 discounted)", () => {
+describeWithFile("2022-0030-5970-4670.pdf")("MaximaParser – 2022-0030-5970-4670 (3 items, 1 discounted)", () => {
   let receipt: Receipt;
 
   beforeAll(async () => {
@@ -128,7 +131,7 @@ describe("MaximaParser – 2022-0030-5970-4670 (3 items, 1 discounted)", () => {
 // ---------------------------------------------------------------------------
 // Receipt 3 – six items, two discounted, product name wraps across two lines
 // ---------------------------------------------------------------------------
-describe("MaximaParser – 2066-0130-0910-0264 (6 items, wrapped name, 2 discounted)", () => {
+describeWithFile("2066-0130-0910-0264.pdf")("MaximaParser – 2066-0130-0910-0264 (6 items, wrapped name, 2 discounted)", () => {
   let receipt: Receipt;
 
   beforeAll(async () => {
